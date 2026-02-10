@@ -29,7 +29,7 @@ A comprehensive educational repository containing well-documented implementation
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Java 11 or higher
+- Java 25 or higher
 - Maven 3.6 or higher
 
 ### Building the Project

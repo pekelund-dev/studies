@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "dev.pekelund.studies.grpc.generated";
+option java_outer_classname = "GreetingProto";
+
+package greeting;
+
+// The greeting service definition.
+// Demonstrates basic gRPC communication patterns.
+service GreetingService {
+  // Simple unary RPC - single request, single response
+  rpc SayHello (HelloRequest) returns (HelloResponse) {}
+  
+  // Server-side streaming RPC - single request, stream of responses
+  rpc SayHelloMany (HelloRequest) returns (stream HelloResponse) {}
+  
+  // Client-side streaming RPC - stream of requests, single response
+  rpc SayHelloFromMany (stream HelloRequest) returns (HelloSummary) {}
+  
+  // Bidirectional streaming RPC - stream of requests and responses
+  rpc ChatHello (stream HelloRequest) returns (stream HelloResponse) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greeting.
+message HelloResponse {
+  string message = 1;
+  int64 timestamp = 2;
+}
+
+// Summary message for aggregated responses.
+message HelloSummary {
+  int32 request_count = 1;
+  string summary_message = 2;
+}
